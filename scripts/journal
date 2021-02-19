@@ -1,0 +1,26 @@
+#!/bin/bash
+
+rute=~/.journal
+arg=${1:-journal}
+cont=0
+
+cd ~/.personal
+dir=$(stoml .config $arg.dir)
+file=$(stoml .config $arg.file)
+
+if [ "$file" != "" ]; then
+   echo success!
+else
+   echo fail!
+   exit
+fi
+
+m=$(date)
+addStr="git add $dir/$file"
+pulStr="git pull --rebase origin master"
+pusStr="git push origin master"
+
+git add -A && git commit -m "$m" && $pulStr && $pusStr
+cd $rute && $pulStr
+abricotine $dir/$file
+$addStr && git commit -m "$m" && $pulStr && $pusStr
