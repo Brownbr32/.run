@@ -1,7 +1,7 @@
 #!/bin/bash
 wd=`pwd`
 echo PATH=\$PATH:`pwd`/bin:`pwd`/scripts > .path;
-cd .. && git clone git@github.com:Brownbr32/.journal.git && ln -s `pwd`/.journal ~/.journal;
+cd .. && git clone git@github.com:Brownbr32/.journal.git && ln -s `pwd`/.journal ~/.personal;
 cd $wd
 mkdir ~/Downloads/deb
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
